@@ -1,0 +1,31 @@
+<div class="d-flex flex-row">
+  <div class="left-bar side py-4">
+    <%= render 'layouts/left-bar'%>
+  </div>
+  <div class="menu">
+
+    <div class="side">
+      <%= render 'rooms/left_menu'%> 
+    </div>
+       
+  </div>  
+  <div class="main px-4 py-5 ">
+    
+    <ul class="tabnav text-center">
+      <li class="mx-3 tab_search"><a href="#search">ユーザーを検索</a></li>
+      <li class="mx-3"><a href="#follows">申請中</a></li>
+      <li class="mx-3"><a href="#followers">フォローリクエスト</a></li>
+    </ul>
+    <div class="tabcontent">
+      <div id="search"><%= render "users/users", {users: @users, tab_name: "search"}%></div>
+      <%= paginate @users%>
+      <div id="follows"><%= render "users/users", {users: @follows, tab_name: "follows"}%></div>
+      <div id="followers"><%= render "users/users", {users: @followers, tab_name: "followers"}%></div>
+    </div>    
+    
+    
+
+  </div>
+</div>
+
+

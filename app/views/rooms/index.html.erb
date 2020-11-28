@@ -1,0 +1,50 @@
+<div class="d-flex flex-row">
+  <div class="left-bar side py-4">
+    <%= render 'layouts/left-bar'%>
+  </div>  
+
+  <div class="menu">
+
+    <div class="side">
+      <%= render 'left_menu'%> 
+    </div>
+       
+  </div>
+  <div class="main">
+    <h2>メッセージ一覧</h2>
+    
+    <% @anotherEntries.each do |e| %>
+    
+
+    
+    
+      <table class="table table-striped">
+        <tr>
+          <td>
+    　　　　<!-- 名前からroomの詳細に飛べるようにリンク化 -->
+            <%= link_to room_path(e.room.id) do %>
+              <%= e.user.name %>
+            <% end %>
+          </td>
+          <td>
+          <% if e.room.messages.present?%>
+           <!-- 最新メッセージ内容の最初の7文字を表示する -->
+            <% dm = Message.find_by(id:e.room.message_ids.last ).content %>
+            <%= truncate(dm, length: 10) %>
+          <%end%>
+          </td>
+          <td>
+            <h6 style="color: #C0C0C0;"><%= e.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>
+          </td>
+          <td>
+           <!-- ゴミ箱アイコンクリックでroomを消せるようにする -->
+            <%= link_to room_path(e.room.id), method: :delete do %>
+                gomibako
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    <% end %>    
+  </div>
+</div>
+

@@ -1,0 +1,32 @@
+<header class="fixed-top">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="tabs-menu">
+      <a href="#tabs-1">a</a>
+      <a href="#tabs-2">b</a>      
+    </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to 'Users', users_path, class: 'nav-link' %></li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item"><%= link_to 'My profile', user_path(current_user) %></li>
+              <li class="dropdown-item"><%=link_to '友達一覧',frends_user_path(current_user)%></li>
+              <li class="dropdown-item"><%=link_to 'フォローきてるよ',followers_user_path(current_user)%></li>
+              <li class="dropdown-item"><%=link_to 'トークルーム一覧',rooms_path%></li>
+              <li class="dropdown-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item"><%= link_to "新規登録", new_user_registration_path %></li>
+          <li class="nav-item"><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>      
+  </nav>
+
+</header>

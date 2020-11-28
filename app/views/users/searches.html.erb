@@ -1,0 +1,9 @@
+<ul><% @users.each do |user| %>
+  <li>
+    <%= link_to user.name, user %>
+    <%= user.search_id %>
+    <%= user.profile %>
+  </li>
+
+  <% end %>
+</ul>

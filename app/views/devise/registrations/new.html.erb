@@ -1,0 +1,47 @@
+
+
+
+<div class="input-form-wrapper">
+  
+  <div class="form">
+    <h2>新規登録</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="form-wrapper">
+        <p class="title">名前<span class="sub-title require">必須</span></p>
+        <%= f.text_field :name, placeholder: "山田", class: "text-input", required: true %>
+      </div>
+      <div class="form-wrapper">
+        <p class="title">ID<span class="sub-title require">必須</span></p>
+        <%= f.text_field :search_id, placeholder: "yamada", class: "text-input", required: true%>
+      </div>
+      <div class="form-wrapper">
+        <p class="title">プロフィール文<span class="sub-title">任意</span></p>
+        <%= f.text_area :profile, placeholder: "アピールしたいことなどを自由に記入しましょう", class: "text-input" %>
+      </div>      
+      <div class="form-wrapper">
+        <p class="title">プロフィール画像<span class="sub-title">任意</span></p>
+        <%= f.file_field :avatar %>
+      </div>    
+      <div class="form-wrapper">
+        <p class="title">メールアドレス<span class="sub-title require">必須</span></p>
+        <%= f.email_field :email, placeholder: "Taro.Yamada@gmail.com", class: "text-input", required: true %>
+      </div>
+      <div class="form-wrapper">
+        <p class="title">パスワード<span class="sub-title require">必須</span></p>
+        <%= f.password_field :password, placeholder: "6文字以上", class: "text-input", required: true %>
+      </div>
+      <div class="form-wrapper">
+        <p class="title">パスワード(確認)<span class="sub-title require">必須</span></p>
+        <%= f.password_field :password_confirmation, placeholder: "パスワードを再度入力してください", class: "text-input", required: true %>
+      </div>
+      <div class="form-wrapper">
+         <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
+
+
+

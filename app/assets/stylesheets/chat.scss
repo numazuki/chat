@@ -1,0 +1,69 @@
+.message{
+  text-align: right;
+}
+
+.hogehoge{
+  word-wrap: break-word;
+}
+
+.mycomment-time{
+  display: inline-block;
+  font-size: smaller;
+}
+
+
+.mycomment-p {
+  display: inline-block;
+  position: relative; 
+  padding: 0 8px;
+  max-width: 80%;
+  border-radius: 12px;
+  background: #d1ffcc;
+  font-size: 15px;
+}
+
+
+.mycomment-p:after {
+  content: "";
+  position: absolute;
+  top: 3px; 
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #d1ffcc;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}
+
+//左
+
+.left-comment .chatting {
+  width: 100%;
+  text-align: left;
+}
+.left-comment-time{
+  display: inline-block;
+  font-size: smaller;  
+}
+
+
+.says {
+  display: inline-block;
+  position: relative; 
+  padding: 0 8px;
+  max-width: 80%;
+  border-radius: 12px;
+  background: #edf1ee;
+  font-size: 15px;
+}
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px; 
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+

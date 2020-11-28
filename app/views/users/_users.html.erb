@@ -1,0 +1,48 @@
+<% if tab_name == "search"%>
+<div class="form-group search_form">
+  <%= form_with(url: users_searches_path,local: true, method: :get, class: "") do |f| %>
+    <%= f.text_field :keyword,class: "search_input form-control text-center",placeholder: "ユーザー名　IDを入力"  %>
+  <% end %>  
+</div>
+<%end%>
+
+
+
+<div class="contents <%=tab_name%>_contents  p-4">
+  <% users.each do |user| %>
+    <%unless current_user == user%>
+      <%= link_to(user_path(user), class: 'user_cell') do %>
+        <div class="user_content d-flex flex-row border-bottom py-1">
+          
+          <div class="user_image">
+            <%if user.avatar? %>
+              <img src="<%= user.avatar %>" class = "icon_image user">
+            <%else%>
+              <img src="assets/default.jpg" class = "icon_image user">
+            <%end%>         
+          </div>
+          <div class="ml-2">
+            <h5 class="mb-0 text-over width-400"><%=user.name%></h5>
+            <p class="mb-0 text-secondary text-over width-400">@<%=user.search_id%></p>
+            <p class="text-over mb-0 width-400"><%=user.profile%></p>
+          </div>
+          
+        </div>
+      <%end%>
+    <%end%>
+  <% end %>
+  
+</div>
+
+<script>
+  var search_input = document.getElementById("keyword")
+  search_input.onkeypress = submit_cancel;
+  
+  function submit_cancel(){
+    console.log('aaa')
+      if( window.event.keyCode == 13 ){
+          return false;
+      }
+  }
+
+</script>

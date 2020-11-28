@@ -1,0 +1,143 @@
+// Place all the styles related to the Rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.side{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.right{
+    text-align: right;
+}
+
+
+
+
+
+.form-bottom{
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 0;
+  width: calc( 100% - 298px );
+  /* フッタの高さ */
+  height: 120px;
+  background: #fff;
+  color: #000; 
+}
+
+.message-form{
+    height: 100%;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;    
+}
+
+
+.container-margin{
+  margin-top: calc( 100vh - 130px );
+}
+
+
+#message-container {
+      
+ 
+  margin-bottom: 120px;
+  padding: 1rem 1rem 3rem 1rem;
+
+}
+
+.left-bar{
+    width: 3rem;
+    background-color: grey;
+    height: 100vh;
+
+}
+
+.menu{
+    width: 250px;
+}
+
+.main{
+  flex: 1;
+	border-right:1px solid #ced4da;
+	border-bottom:1px solid #ced4da;
+	border-left:1px solid #ced4da; 
+	width: calc( 100% - 298px );
+}
+
+.ffff{
+  flex: 1 10px;
+}
+
+.fa-size{
+    font-size: 1.5rem;
+}
+
+._index-right{
+    width: 60px;
+}
+
+._index-center{
+    flex: 1;
+}
+
+._index-left{
+  display: flex;
+  justify-content: center;    
+  align-items: center; 
+}
+
+._index-block{
+    height: 80px;
+}
+
+.user-name{
+    position: fixed;
+    top: 0;
+    width: calc( 100% - 298px );
+    background-color: white;
+    z-index: 1;    
+}
+
+.dropdown-toggle::after {
+    display:none;
+}
+
+.dropup{
+   
+}
+
+.left-bar{
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;    
+}
+
+.room_form{
+  width: calc(100% - 62px );
+  padding: 12px;
+}
+
+.width-107{
+  width: 107px;
+}
+
+.left_frend_form,.left_frend_form:hover{
+  text-decoration: none;
+    
+}
+
+.font-smaller{
+  font-size: smaller;
+}

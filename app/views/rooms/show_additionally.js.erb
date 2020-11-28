@@ -1,0 +1,17 @@
+
+var messageHeight = messageContainer.scrollHeight
+// 今回は上からメッセージを追加
+messageContainer.insertAdjacentHTML('afterbegin', "<%= j(render @messages) %>")
+var newMessageHeight = messageContainer.scrollHeight
+window.scrollBy(0, newMessageHeight - messageHeight)
+
+console.log('addition')
+
+// メッセージが存在するときだけ，更に読み込み可能とする
+console.log(`newheight:${newMessageHeight}`);
+showAdditionally = true
+<% if @messages.present? %>
+    showAdditionally = true
+<% end %>
+
+

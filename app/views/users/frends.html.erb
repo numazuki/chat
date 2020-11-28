@@ -1,0 +1,43 @@
+<table class="table offset-2 col-8">
+<% @frends.each do |frend| %>
+ <% userEntry = Entry.where(user_id: frend.id)%>
+
+  
+    <tr>
+        <th class="text-center">name</th>
+        <th class="text-center">id</th>
+        <th class="text-center">email</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+    <tr>
+        <td><%=frend.name%></td>
+        <td class="text-center"><%=frend.id%></td>
+        <td class="text-center"><%= link_to frend.email, user_path(frend.id) %></td>
+        <% if user_signed_in? && frend != current_user %>
+          <td id="follow_form_<%=frend.id%>">
+            <% if current_user.following?(frend) %>
+              <%= render "unfollow", user: frend %>
+            <% else %>
+              <%= render "follow", user: frend %>
+            <% end %>
+          </td>
+        <% end %>  
+        <td> 
+        <% @currentUserEntry.each do |cu| %>
+          <% userEntry.each do |u|%>
+            <% if cu.room_id == u.room_id then %>
+              <% isRoom = true%>
+              <% @roomId = cu.room_id%>
+              <%= link_to room_path(@roomId) do %>
+                <button id="dm_submit">room</button>
+              <% end %>              
+            <%end%>
+          <%end%>
+        <%end%>
+        </td>
+    </tr>
+<% end %>
+</table>
+<%=link_to 'index',users_path%>

@@ -1,0 +1,19 @@
+<%actionName = "#{controller.controller_name}##{controller.action_name}" %>
+<% if actionName == "rooms#index" %>
+  <% actionPath = '/rooms' %>
+<% elsif actionName == "rooms#show" %>
+  <% actionPath = @room %>
+<% end %>
+
+<div class="">
+  <div class="form-group py-4 sticky-top bg-white">
+    <%= form_with(url: actionPath, method: :get, local: true) do |f| %>
+      <%= f.text_field :frend_keyword,class:"form-control",placeholder: "友達検索" %>
+    <% end %>    
+  </div>
+
+  
+  <div class="left_menu_scroll">
+    <%= render 'users/left_frends',frends: @frends%>
+  </div>  
+</div>

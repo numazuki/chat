@@ -1,0 +1,45 @@
+<section class="tabs-content">
+  <section id="tabs-1">
+    <%= render 'users/frends', frends: @frends %>
+
+  </section>
+  <section id="tabs-2">
+    <%=render 'rooms/rooms'%>
+  </section>
+
+</section>
+
+<script>
+document.addEventListener('turbolinks:load',function(){
+  const showTab = (selector) => {
+    // 引数selectorの中身をコンソールで確認する
+    console.log(selector);
+  
+    $('.tabs-menu > .tab').removeClass('active');
+  
+    $('.tabs-content > section').hide();
+  
+    $(`.tabs-menu a[href="${selector}"]`).addClass('active');
+  
+    $(selector).show();
+  };
+
+  $('.tabs-menu > .tab').on('click', (e) => {
+    // hrefへのページ遷移を止める
+    e.preventDefault();
+  
+    // hrefの値を受け取った後、showTab()関数に渡す。e.targetはクリックされたタブ（.tabs-menu a）を表す
+    const selector = $(e.currentTarget).attr('href');
+    showTab(selector);
+  });
+  
+  // 初期状態として1番目のタブを表示
+  <% if params[:room_keyword]%>
+   showTab('#tabs-2');
+  <%else%>
+    showTab('#tabs-1');  
+  <%end%>
+  
+})
+
+</script>

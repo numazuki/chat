@@ -1,0 +1,52 @@
+<div class="d-flex flex-row">
+  <div class="left-bar side py-4">
+    <%= render 'layouts/left-bar'%>
+  </div>
+  <div class="menu">
+
+    <div class="side">
+      <%= render 'rooms/left_menu'%> 
+    </div>
+       
+  </div>  
+  <div class="main py-5">
+    <div class="inner">
+      <div class="border p-4">
+        <%if @user.avatar? %>
+          <img src="<%= @user.avatar %>" class = "show_icon_image">
+        <%else%>
+          <%= image_tag 'default.jpg',class: 'show_icon_image' %>
+        <%end%>
+        <h4 class="mt-2"><%=@user.name%></h4>
+        <h6 class="mt-3 text-secondary">@<%=@user.search_id%></h6>
+        <div class="p-2 border word-break mt-3 rounded">
+          <%=simple_format(@user.profile)%>
+        </div>
+  
+        <div class="d-flex justify-content-between">
+          <div>
+           
+          </div>
+          <div class="mt-3" id="follow_form_<%=@user.id%>">
+             
+            <% if current_user.following?(@user) %>
+              <%= render "unfollow", user: @user %>
+            <% else %>
+              <%= render "follow", user: @user %>
+            <% end %>
+          </div>        
+        </div>      
+      </div> 
+      <div class="mt-4">
+        <%= link_to :back do %>
+          <button class="btn btn-secondary">戻る</button>
+        <% end %>        
+      </div>      
+    </div>
+
+
+   
+
+  </div>
+</div>
+
