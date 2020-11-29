@@ -3,19 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-.side{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}
-
 .right{
     text-align: right;
 }
-
-
-
 
 
 .form-bottom{
@@ -51,7 +41,6 @@
 
 #message-container {
       
- 
   margin-bottom: 120px;
   padding: 1rem 1rem 3rem 1rem;
 
@@ -61,7 +50,9 @@
     width: 3rem;
     background-color: grey;
     height: 100vh;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
 }
 
 .menu{
@@ -76,9 +67,6 @@
 	width: calc( 100% - 298px );
 }
 
-.ffff{
-  flex: 1 10px;
-}
 
 .fa-size{
     font-size: 1.5rem;
@@ -112,16 +100,6 @@
 
 .dropdown-toggle::after {
     display:none;
-}
-
-.dropup{
-   
-}
-
-.left-bar{
-     display: flex;
-     flex-direction: column;
-     justify-content: space-between;    
 }
 
 .room_form{

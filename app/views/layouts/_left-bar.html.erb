@@ -10,20 +10,17 @@
 
 <div class="dropup text-center">
 
-	<a href="#" class="btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">
+	<a href="#" class="btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
     <i class="fas fa-bars"></i>
 	</a>    
   <div class="dropdown-menu">
-    <ul>
-      <li class="dropdown-item"><%= link_to 'Users', users_path%></li>
-      <li class="dropdown-item"><%= link_to 'My profile', user_path(current_user) %></li>
-      <li class="dropdown-item"><%=link_to '友達一覧',frends_user_path(current_user)%></li>
-      <li class="dropdown-item"><%=link_to 'フォローきてるよ',followers_user_path(current_user)%></li>
-      <li class="dropdown-item"><%=link_to 'トークルーム一覧',rooms_path%></li>
-      <li class="dropdown-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>         
-    </ul>
+    
+      <%= link_to 'My profile', user_path(current_user),class: "dropdown-item" %>
+      <%=link_to "ログアウト", destroy_user_session_path, method: :delete ,class: "dropdown-item"%>       
+    
   </div>
-</div>   
+</div> 
+
 
 
 
