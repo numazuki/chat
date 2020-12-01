@@ -1,0 +1,43 @@
+<h1>プロフィール編集</h1>
+
+<%= form_with model: @user do |f| %>
+      <div class="form-wrapper">
+        <p class="title">名前<span class="sub-title require">必須</span></p>
+        <%= f.text_field :name, placeholder: "山田", class: "text-input", required: true %>
+      </div>
+      <div class="form-wrapper">
+        <p class="title">ID<span class="sub-title require">必須</span></p>
+        <%= f.text_field :search_id, placeholder: "yamada", class: "text-input", required: true%>
+      </div>
+      <div class="form-wrapper">
+        <p class="title">プロフィール文<span class="sub-title">任意</span></p>
+        <%= f.text_area :profile, placeholder: "アピールしたいことなどを自由に記入しましょう", class: "text-input" %>
+      </div>      
+      <div class="form-wrapper">
+        <p class="title">プロフィール画像<span class="sub-title">任意</span></p>
+        <%= f.file_field :avatar, id: :avatar %>
+        <% if @user.avatar.present? %>
+          <%= image_tag @user.avatar.url, id: :img_prev %>
+        <% else %>
+          <%= image_tag "default.jpg", id: :img_prev %>
+        <% end %>
+      </div>    
+      <div><%= f.submit "保存" %></div>
+<% end %>
+
+<script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#img_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#avatar").change(function(){
+        readURL(this);
+    });
+  });
+</script>

@@ -38,7 +38,21 @@ class UsersController < ApplicationController
   end 
   
 
+
+  def edit
+    @user = User.find(params[:id])
+  end
   
+  def update
+    @user = User.find(params[:id])
+    if current_user.update(user_params)
+      redirect_to user_path(current_user)
+    else
+      redirect_to edit_user_path(current_user)
+    end  
+  end
+
+
   
   def follows
     user = User.find(params[:id])
@@ -58,6 +72,10 @@ class UsersController < ApplicationController
   end
 
   
-  
+  private
+
+  def user_params
+    params.fetch(:user, {}).permit(:name,:avatar,:profile,:search_id)
+  end
   
 end
