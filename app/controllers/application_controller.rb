@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def self.render_with_signed_in_user(user, *args)
-     ActionController::Renderer::RACK_KEY_TRANSLATION['warden'] ||= 'warden'
-     proxy = Warden::Proxy.new({}, Warden::Manager.new({})).tap{|i| i.set_user(user, scope: :user) }
-     renderer = self.renderer.new('warden' => proxy)
-     renderer.render(*args)
+    ActionController::Renderer::RACK_KEY_TRANSLATION['warden'] ||= 'warden'
+    proxy = Warden::Proxy.new({}, Warden::Manager.new({})).tap{|i| i.set_user(user, scope: :user) }
+    renderer = self.renderer.new('warden' => proxy)
+    renderer.render(*args)
   end 
   
   
@@ -26,7 +26,6 @@ class ApplicationController < ActionController::Base
     else
       @frends = current_user.followings & current_user.followers
     end
-   
   end
 
   def room_search
@@ -37,8 +36,9 @@ class ApplicationController < ActionController::Base
       # <<は配列の最後に追加するよ
       myRoomIds << entry.room.id
     end
-    if params[:room_keyword]
-      @search_room_ids = Message.where(content: "#{params[:room_keyword]}").pluck(:room_id)
+    if params[:room_keyword].present?
+      @search_room = Message.where(content: "#{params[:room_keyword]}").pluck(:room_id)
+      @search_room_ids = @search_room & myRoomIds
       @anotherEntries = Entry.where(room_id: @search_room_ids).where.not(user_id: current_user.id)
       @section_number = 2
       #binding.pry

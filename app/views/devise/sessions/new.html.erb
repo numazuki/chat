@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between py-4">
+<div class="wrapper d-flex py-4">
   <div class="top">
     <p class="top-title">Chat App</p>
     <p class="top-icon"><i class="far fa-comments"></i></p>
@@ -21,9 +21,6 @@
             <div class="column-left">
               <%= f.label :password, "パスワード" %>
             </div>
-            <div class="column-right">
-              <%= link_to "パスワードを忘れた場合", new_user_password_path %>
-            </div>
           </div>
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
@@ -44,8 +41,6 @@
         <%= link_to "アカウントを作成", new_user_registration_path %>
       </div>
     </div>
-    <%= render "devise/shared/links" %>  
   </div>
   
 </div> 
- 

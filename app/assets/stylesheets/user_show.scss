@@ -1,0 +1,30 @@
+.main{
+  flex: 1;
+	border-right:1px solid #ced4da;
+	border-bottom:1px solid #ced4da;
+	border-left:1px solid #ced4da; 
+  width: calc( 100% - 298px );  
+  .inner{
+    width: 60%;
+    margin: 0 auto;
+    max-width: 500px;
+    .user_info{
+      border: 1px solid #dee2e6;
+      padding: 1.5rem;
+      .show_icon_image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        object-fit: cover;
+        border: 3px solid #ddd;
+      }    
+      .word-break {
+        word-break: break-all;
+      }
+      .user_prof{
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+      }
+    }  
+  }
+}

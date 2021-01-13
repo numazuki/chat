@@ -9,34 +9,42 @@
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="form-wrapper">
         <p class="title">名前<span class="sub-title require">必須</span></p>
-        <%= f.text_field :name, placeholder: "山田", class: "text-input", required: true %>
+        <%= f.text_field :name, placeholder: "山田", class: "text-input form-control", required: true %>
       </div>
       <div class="form-wrapper">
         <p class="title">ID<span class="sub-title require">必須</span></p>
-        <%= f.text_field :search_id, placeholder: "yamada", class: "text-input", required: true%>
+        <%= f.text_field :search_id, placeholder: "yamada", class: "text-input form-control", required: true%>
       </div>
       <div class="form-wrapper">
         <p class="title">プロフィール文<span class="sub-title">任意</span></p>
-        <%= f.text_area :profile, placeholder: "アピールしたいことなどを自由に記入しましょう", class: "text-input" %>
+        <%= f.text_area :profile, placeholder: "アピールしたいことなどを自由に記入しましょう", class: "text-area form-control" %>
       </div>      
       <div class="form-wrapper">
         <p class="title">プロフィール画像<span class="sub-title">任意</span></p>
-        <%= f.file_field :avatar %>
-      </div>    
+        <div>
+          <% if @user.avatar.present? %>
+            <%= image_tag @user.avatar.url, id: :img_prev,class: 'image' %>
+          <% else %>
+            <%= image_tag "default.jpg", id: :img_prev, class: 'image' %>
+          <% end %>
+          <%= f.file_field :avatar, id: :avatar, class:'ml-3' %>            
+        </div>
+
+      </div>       
       <div class="form-wrapper">
         <p class="title">メールアドレス<span class="sub-title require">必須</span></p>
-        <%= f.email_field :email, placeholder: "Taro.Yamada@gmail.com", class: "text-input", required: true %>
+        <%= f.email_field :email, placeholder: "Taro.Yamada@gmail.com", class: "text-input form-control", required: true %>
       </div>
       <div class="form-wrapper">
         <p class="title">パスワード<span class="sub-title require">必須</span></p>
-        <%= f.password_field :password, placeholder: "6文字以上", class: "text-input", required: true %>
+        <%= f.password_field :password, placeholder: "6文字以上", class: "text-input form-control", required: true %>
       </div>
       <div class="form-wrapper">
         <p class="title">パスワード(確認)<span class="sub-title require">必須</span></p>
-        <%= f.password_field :password_confirmation, placeholder: "パスワードを再度入力してください", class: "text-input", required: true %>
+        <%= f.password_field :password_confirmation, placeholder: "パスワードを再度入力してください", class: "text-input form-control", required: true %>
       </div>
       <div class="form-wrapper">
-         <%= f.submit "Sign up" %>
+        <%= f.submit "Sign up" %>
       </div>
     <% end %>
     <%= render "devise/shared/links" %>
@@ -45,3 +53,19 @@
 
 
 
+<script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+    $('#img_prev').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#avatar").change(function(){
+        readURL(this);
+    });
+  });
+</script>

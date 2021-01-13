@@ -21,10 +21,10 @@ document.addEventListener('turbolinks:load',function(){
   function appendErrMsgToHTML(msg) {
     var html = `
 　　　　　　　　 <div class="user_content">
-                 　<p class="user_name text-center">
+                　<p class="user_name text-center">
                   　　${ msg }
-                 　</p>
-                 </div>
+                　</p>
+              </div>
 　　　　　　　　　`
     search_list.append(html);
     
@@ -48,7 +48,7 @@ document.addEventListener('turbolinks:load',function(){
         $(".pagination").show();
         console.log('open')
       }
-       
+      
       console.log(users)
       $(".search_contents").empty();
       if (users.length !== 0) {

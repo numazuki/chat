@@ -10,14 +10,14 @@
             <%= image_tag 'default.jpg',class: 'icon_image user' %>
           <%end%>         
         </div>
-        <div class="_index-center py-1  width-107">
+        <div class="_index-center py-1">
           <%= link_to room_path(e.room.id) do %>
             <p class="mb-0 text-over font-smaller mt-2">
               <%= e.user.name %>
             </p>
-            <p style="font-size:small;" class="mb-0 mt-2"> 
+            <p style="font-size:small;" class="mb-0 mt-2 h-100"> 
               <% if e.room.messages.present?%>
-               <!-- 最新メッセージ内容の最初の7文字を表示する -->
+              <!-- 最新メッセージ内容の最初の7文字を表示する -->
                 <% dm = Message.find_by(id:e.room.message_ids.last ).content %>
                 <%= truncate(dm, length: 16) %>
               <% end%>          

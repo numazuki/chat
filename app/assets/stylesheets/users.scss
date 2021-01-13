@@ -5,132 +5,25 @@
 
 .icon_image {
   width: 50px;
-  height: 50px;
-  //サイズ指定
+  height: 50px;  
   border-radius: 50px;
-  //画像を丸くする
   object-fit: cover;
-  //タテヨコ比を変えないままトリミング
 }
+
 
 #message-container {
   padding: 1rem 1rem 3rem 1rem;
 }
 
 
-
-
-
-.left_frend:hover{
-  background-color: #f5f5f5;
-}
-
-.tabnav{
-  margin: 0;
-  padding: 0;
-  
-}
-.tabnav li{
-  display: inline-block;
-  
-}
-.tabnav li a{
-  display: inline-block;
-  background: #ddd;
-  color: #333;  
-  padding: 10px 2px;
-  border-radius: 5px 5px 0 0;
-  text-decoration: none;
-  width: 160px;
-}
-
-.tabnav li a:hover,.tabnav li a.active{
-  background: #405dca;
-  color: #fff;
-}
-.tabcontent{
-  padding: 20px;
-  border: 1px dotted #ccc;
-  width: 550px;
-  margin: 0 auto;
-}
-
-.inner{
-  width: 60%;
-  margin: 0 auto;
-  max-width: 500px;  
-}
-
-.show_icon_image {
-  width: 100px;
-  height: 100px;
-  //サイズ指定
-  border-radius: 50px;
-  //画像を丸くする
-  object-fit: cover;
-  border: 3px solid #ddd;
-}
-
-.word-break {
-    word-break: break-all;
-}
-
-.search_form{
-  margin: 0 auto ;
-}
-
 .text-over{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
- 
-}
-
-.width-400{
-   width: 400px;
-}
-
-/*ページネーション自体のデザイン*/
-.pagination>li>a {          
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
-}
-
-/* 表示しているページ番号のデザイン */
-.pagination>.active>a {     
-  border-radius: 0.25rem;     /*角を丸くする*/
-}
-
-/*ホバー時のデザイン*/
-
-.pagination>li>a:hover {        
-  border-radius: 0.25rem;    /*角を丸くする*/
-}
-
-.pagination{
-  
-  justify-content: center;
 
 }
 
-.user_image{
-  margin: auto;
-}
 
 
-.user_cell{
-  text-decoration: none;
-}
 
-.user_cell:hover{
-  text-decoration: none;
-}
 
-.user_content:hover{
-  background-color: #f5f5f5;
-}
-
-.left_menu_scroll{
-  height: calc(100vh - 120px);
-  overflow-y: scroll;
-}

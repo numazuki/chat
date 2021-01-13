@@ -13,7 +13,7 @@
 document.addEventListener('turbolinks:load',function(){
   const showTab = (selector) => {
     // 引数selectorの中身をコンソールで確認する
-    console.log(selector);
+    console.log(`selecter:${selector}`);
   
     $('.tabs-menu > .tab').removeClass('active');
   
@@ -26,8 +26,7 @@ document.addEventListener('turbolinks:load',function(){
 
   $('.tabs-menu > .tab').on('click', (e) => {
     // hrefへのページ遷移を止める
-    e.preventDefault();
-  
+    e.preventDefault(); 
     // hrefの値を受け取った後、showTab()関数に渡す。e.targetはクリックされたタブ（.tabs-menu a）を表す
     const selector = $(e.currentTarget).attr('href');
     showTab(selector);
@@ -35,11 +34,11 @@ document.addEventListener('turbolinks:load',function(){
   
   // 初期状態として1番目のタブを表示
   <% if params[:room_keyword]%>
-   showTab('#tabs-2');
+    showTab('#tabs-2');
   <%else%>
     showTab('#tabs-1');  
-  <%end%>
-  
+  <%end%>   
+
 })
 
 </script>

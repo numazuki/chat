@@ -1,0 +1,14 @@
+.left-bar{
+  width: 3rem;
+  background-color: grey;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  .tabs-menu{
+    text-align: center;
+    .fa-size{
+      font-size: 1.5rem;
+  }
+  }
+}

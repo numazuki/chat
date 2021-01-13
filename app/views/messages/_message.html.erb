@@ -1,34 +1,33 @@
 <div class="message" id="message-<%= message.id %>">
   <%if message.user.id == current_user.id %>
   
-    <div class="right mycomment mt-2">
+    <div class="mycomment mt-2">
       <div class="mycomment-time">
         <% if message.created_at.strftime('%Y/%m/%d') == Date.today.strftime('%Y/%m/%d')%>
-         <p style="color: #C0C0C0"><%= l message.created_at, format: '%H:%M' %></p>
+          <p><%= l message.created_at, format: '%H:%M' %></p>
         <%else%>
-         <p style="color: #C0C0C0"><%= l message.created_at, format: '%m/%d' %></p>
+          <p><%= l message.created_at, format: '%m/%d' %></p>
         <%end%>        
       </div>
       <div class="mycomment-p">
-        <p class="dm_content"><%= simple_format((h message.content),class: 'hogehoge') %></p>
+        <p class=""><%= simple_format((h message.content),class: 'hogehoge') %></p>
       </div>
     </div>
   <%else%>
     <div class="left-comment mt-2">
       <div class="chatting">
         <div class="says">
-          <p class="dm_content"><%= simple_format((h message.content),class: 'hogehoge') %></p>
-             
+          <p class=""><%= simple_format((h message.content),class: 'hogehoge') %></p>
+            
         </div> 
         <div class="left-comment-time">
           <% if message.created_at.strftime('%Y/%m/%d') == Date.today.strftime('%Y/%m/%d')%>
-           <p style="color: #C0C0C0"><%= l message.created_at, format: '%H:%M' %></p>
+            <p><%= l message.created_at, format: '%H:%M' %></p>
           <%else%>
-           <p style="color: #C0C0C0"><%= l message.created_at, format: '%m/%d' %></p>
+            <p><%= l message.created_at, format: '%m/%d' %></p>
           <%end%>        
         </div>         
       </div>
-     
     </div>
   <%end%>
 </div>

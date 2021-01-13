@@ -45,6 +45,8 @@ before_action :room_search, only: [:index, :show]
   end
 
   def create
+    
+    #binding.pry
     @room = Room.create(:name => "DM")
     #entryにログインユーザーを作成
     @entry1 = Entry.create(:room_id => @room.id, :user_id => current_user.id)
@@ -69,6 +71,5 @@ before_action :room_search, only: [:index, :show]
   private
   
 
-     
   
 end

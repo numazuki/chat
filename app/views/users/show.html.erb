@@ -1,28 +1,25 @@
 <div class="d-flex flex-row">
-  <div class="left-bar py-4">
+  <div class="left-bar py-4 sticky-top">
     <%= render 'layouts/left-bar'%>
   </div>
   <div class="menu">
-
-   
-      <%= render 'rooms/left_menu'%> 
-  
-       
+    <%= render 'rooms/left_menu'%> 
   </div>  
   <div class="main py-5">
     <div class="inner">
-      <div class="border p-4">
+      <div class="user_info">
         <%if @user.avatar? %>
           <img src="<%= @user.avatar %>" class = "show_icon_image">
         <%else%>
           <%= image_tag 'default.jpg',class: 'show_icon_image' %>
         <%end%>
-        <h4 class="mt-2"><%=@user.name%></h4>
+        userid : <%=@user.id%>
+        <h4 class="mt-2 word-break"><%=@user.name%></h4>
         <h6 class="mt-3 text-secondary">@<%=@user.search_id%></h6>
-        <div class="p-2 border word-break mt-3 rounded">
+        <div class="p-2 user_info word-break mt-3">
           <%=simple_format(@user.profile)%>
         </div>
-  
+
         <div class="d-flex justify-content-between">
           <div class="mt-3">
             <%if @user == current_user%>
@@ -49,10 +46,7 @@
         <% end %>        
       </div>      
     </div>
-
-
-   
-
   </div>
 </div>
+
 

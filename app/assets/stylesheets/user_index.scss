@@ -1,0 +1,89 @@
+.main{
+  flex: 1;
+	border-right:1px solid #ced4da;
+	border-bottom:1px solid #ced4da;
+	border-left:1px solid #ced4da; 
+  width: calc( 100% - 298px );  
+  .user_list{
+    padding: 3rem 1.5rem;
+    .tabnav{
+      margin: 0;
+      padding: 0;
+      > li{
+        display: inline-block;
+        > a{
+          display: inline-block;
+          background: #ddd;
+          color: #333;  
+          padding: 10px 2px;
+          border-radius: 5px 5px 0 0;
+          text-decoration: none;
+          width: 160px;          
+        }
+        > a:hover,> a.active{
+          background: #405dca;
+          color: #fff;
+        }
+      }  
+    }
+    .tabcontent{
+      padding: 20px;
+      border: 1px dotted #ccc;
+      width: 550px;
+      margin: 0 auto;
+      .search_form{
+        margin: 0 auto ;
+      }
+      .contents{
+        padding: 1.5rem;
+        .user_cell{
+          text-decoration: none;
+          &:hover{
+            text-decoration: none;
+          }
+          .user_content{
+            border-bottom: 1px solid #dee2e6;
+            padding: 0.25rem 0;
+            &:hover{
+              background-color: #f5f5f5;
+            }
+            .user_image{
+              margin: auto 0;
+              .icon_image {
+                width: 50px;
+                height: 50px;  
+                border-radius: 50px;
+                object-fit: cover;
+              }              
+            }
+            .user_prof{
+              margin-left: 0.5rem;
+              > h5, > p{
+                width: 400px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+
+      }
+      nav > .pagination{
+        justify-content: center;
+        >li >a {          
+          border: none;     /*枠線をなくす*/
+          color: #696969; 
+          &:hover{
+            border-radius: 0.25rem; 
+          } 
+        }
+        >.active>a {     
+          border-radius: 0.25rem;   
+          color: aliceblue;
+        }
+      }
+    }
+  }
+}
