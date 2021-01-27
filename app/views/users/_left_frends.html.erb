@@ -1,33 +1,32 @@
-<% frends.each do |frend| %>
-  <% unless frend.id == current_user.id%>  
-  <% currentUserEntry = Entry.where(user_id: current_user.id)%>
-  <% userEntry = Entry.where(user_id: frend.id)%>  
-  <div class="d-flex flex-row justify-content-between left_frend p-1">    
-    <%= link_to user_path(frend.id) do %>
-      <%if frend.avatar? %>
-        <img src="<%= frend.avatar %>" class = "icon_image">
-      <%else%>
-        <%= image_tag 'default.jpg',class: 'icon_image' %>
-      <%end%>
-    <%end%>
-
-    <% @isRoom = nil %>
-    <% currentUserEntry.each do |cu| %>
-      <% userEntry.each do |u|%>       
-        <% if cu.room_id == u.room_id then %>
-          <% @isRoom = true%>
-          <% roomId = cu.room_id%>
-
-          <%= link_to(room_path(roomId), class: 'left_frend_form') do %>
-            <p class="mb-0 h-100 text-over">
-              <%=frend.name%>
-            </p>          
-          <% end %>
+<% if frends.present?%>
+  <% frends.each do |frend| %>
+    <% unless frend.id == current_user.id%>  
+    <% current_user_entry = Entry.where(user_id: current_user.id)%>
+    <% user_entry = Entry.where(user_id: frend.id)%>  
+    <div class="d-flex flex-row justify-content-between left_frend p-1">    
+      <%= link_to user_path(frend.id) do %>
+        <%if frend.avatar? %>
+          <img src="<%= frend.avatar %>" class = "icon_image">
+        <%else%>
+          <%= image_tag 'default.jpg',class: 'icon_image' %>
         <%end%>
-        
       <%end%>
-    <%end%>
-      <%unless @isRoom == true %>      
+
+      <% @is_room = nil %>
+      <% current_user_entry.each do |cu| %>
+        <% user_entry.each do |u|%>       
+          <% if cu.room_id == u.room_id then %>
+            <% @is_room = true%>
+            <% room_id = cu.room_id%>
+            <%= link_to(room_path(room_id), class: 'left_frend_form') do %>
+              <p class="mb-0 h-100 text-over">
+                <%=frend.name%>
+              </p>          
+            <% end %>
+          <%end%>
+        <%end%>
+      <%end%>
+      <%unless @is_room == true %>      
         <%= form_for @room_new, url: rooms_path, html:{name: "room_form",class: "room_form",id: "room_create_form"} do |f| %>
           <%= fields_for @entry_new do |o| %>
             <%= o.hidden_field :user_id, :value=> frend.id %>
@@ -38,9 +37,11 @@
               <%= frend.name%>
             </p>
           <% end %>           
-
         <% end %>           
       <%end%>
-  </div>
-  <%end%>  
-<% end %>
+    </div>
+    <%end%>  
+  <% end %>
+<%else%>
+  <p class="text-center">該当結果はありません</p>
+<%end%>

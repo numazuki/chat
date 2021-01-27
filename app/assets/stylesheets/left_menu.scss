@@ -24,6 +24,7 @@
       }
       .left_frend_form{
         text-decoration: none;
+        color: black;
         width: calc(100% - 62px );
         padding: 12px;
         text-align: center;
@@ -54,24 +55,37 @@
             background-color: #f5f5f5;
           }
         }
-
       }      
     }
     ._index-block{
       height: 80px;
+      &:hover{
+        background-color:#f5f5f5;
+      }
       ._index-right{
         width: 60px;
+        .gomi{
+          color: gray;
+        }
       }    
       ._index-center{
           flex: 1;
           width: 107px;
-          .text-over{
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-          .font-smaller{
-            font-size: smaller;
+          .deco-no{
+            text-decoration: none;
+            .text-over{
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+            .user_name{
+              font-size: smaller;
+              color: black;
+            }
+            .user_message{
+              font-size:small;
+              color: dimgray;
+            }
           }
       }    
       ._index-left{

@@ -1,7 +1,7 @@
 <% if tab_name == "search"%>
   <div class="form-group search_form">
     <%= form_with(url: users_searches_path,local: true, method: :get, class: "") do |f| %>
-      <%= f.text_field :keyword,class: "search_input form-control text-center",placeholder: "ユーザー名　IDを入力"  %>
+      <%= f.text_field :keyword,class: "search_input form-control text-center",placeholder: "ユーザー名　ID　プロフィールを入力"  %>
     <% end %>  
   </div>
 <%end%>
@@ -22,9 +22,9 @@
             <%end%>         
           </div>
           <div class="user_prof">
-            <h5 class=""><%=user.name%></h5>
+            <h5 class="text-dark"><%=user.name%></h5>
             <p class="text-secondary">@<%=user.search_id%></p>
-            <p class=""><%=user.profile%></p>
+            <p class="demigrey"><%=user.profile%></p>
           </div>
           
         </div>

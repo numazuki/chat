@@ -58,6 +58,9 @@
             }
             .user_prof{
               margin-left: 0.5rem;
+              .demigrey{
+                color: dimgray;
+              }
               > h5, > p{
                 width: 400px;
                 white-space: nowrap;

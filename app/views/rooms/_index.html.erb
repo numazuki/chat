@@ -1,39 +1,48 @@
-<% anotherEntries.each do |e| %>
-  <%unless e.user_id == current_user.id %>
-    
-    <div class="p-1  border _index-block d-flex justify-content-between">
-      
+<%if another_entries.present?%>
+  <% another_entries.each do |e| %>
+    <%unless e.user_id == current_user.id %>
+      <div class="p-1 border _index-block d-flex justify-content-between">
         <div class="_index-left mr-2">
-          <%if e.user.avatar? %>
-            <img src="<%=e.user.avatar.url%>" class = "icon_image user ">
-          <%else%>
-            <%= image_tag 'default.jpg',class: 'icon_image user' %>
-          <%end%>         
+          <%= link_to user_path(e.user.id) do %>
+            <%if e.user.avatar? %>
+              <img src="<%=e.user.avatar.url%>" class = "icon_image user ">
+            <%else%>
+              <%= image_tag 'default.jpg',class: 'icon_image user' %>
+            <%end%>   
+          <%end%>      
         </div>
         <div class="_index-center py-1">
-          <%= link_to room_path(e.room.id) do %>
-            <p class="mb-0 text-over font-smaller mt-2">
-              <%= e.user.name %>
-            </p>
-            <p style="font-size:small;" class="mb-0 mt-2 h-100"> 
-              <% if e.room.messages.present?%>
-              <!-- 最新メッセージ内容の最初の7文字を表示する -->
-                <% dm = Message.find_by(id:e.room.message_ids.last ).content %>
-                <%= truncate(dm, length: 16) %>
-              <% end%>          
-            </p>
-          <%end%>
+            <%= link_to room_path(e.room.id),class: 'deco-no' do %>
+              <p class="mb-0 text-over user_name mt-2">
+                <%= e.user.name %>
+              </p>
+              <p class="mb-0 mt-2 h-100 user_message"> 
+                <% if e.room.messages.present?%>
+                  <% dm = Message.find_by(id:e.room.message_ids.last ).content %>
+                  <%= truncate(dm, length: 16) %>
+                <% end%>          
+              </p>
+            <%end%>
         </div>
-        <div class="_index-right">
-          <div style="color: #C0C0C0; font-size:11px;"><%= e.updated_at.strftime("%Y/%m/%d") %></div>
-          <div class="text-right mt-3"> 
-            <%= link_to room_path(e.room.id), method: :delete do %>
-              <i class="far fa-trash-alt"></i>
-            <% end %>           
+          <div class="_index-right">
+            <div style="color: #C0C0C0; font-size:11px;">
+              <%if e.room.messages.present?%>
+                <%=e.room.messages.last.created_at.strftime("%Y/%m/%d") %>
+              <%end%>            
+            </div>
+
+            
+            <div class="text-right mt-3"> 
+              <%= link_to room_path(e.room.id), method: :delete, data: {confirm: "トークルームを削除しますか？"} do %>
+                <i class="far fa-trash-alt gomi"></i>
+              <% end %>           
+            </div>
           </div>
-        </div>
+        
+      </div>  
       
-    </div>  
-    
-  <%end%>
-<% end %>    
+    <%end%>
+  <% end %>    
+<%else%>
+  <p class="text-center">該当結果はありません</p>
+<%end%>

@@ -1,23 +1,20 @@
 
 <div class="tabs-menu p-2 ">
-  <a href="#tabs-1" class="d-block fa-size tab"><i class="fas fa-user"></i></a>
-  <a href="#tabs-2" class="d-block mt-4 fa-size tab"><i class="far fa-comment-dots"></i></a>
-  <%= link_to users_path, class:"d-block mt-4 fa-size" do %>
+  <a href="#tabs-1" class="d-block bar-fa tab"><i class="fas fa-user"></i></a>
+  <a href="#tabs-2" class="d-block mt-4 bar-fa tab"><i class="far fa-comment-dots"></i></a>
+  <%= link_to users_path, class:"d-block mt-4 bar-fa" do %>
     <i class="fas fa-user-plus"></i>
   <% end %>   
 </div>
 
-<div>
-
-  <div class="dropup text-right">
-
-    <a href="#" class="btn btn-default" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+<div class="bar-bottom">
+  <div class="dropup">
+    <a href="#" class="btn btn-default bar-fa" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
       <i class="fas fa-cog"></i>
     </a>    
     <div class="dropdown-menu">  
         <%= link_to 'My profile', user_path(current_user),class: "dropdown-item" %>
-        <%=link_to "ログアウト", destroy_user_session_path, method: :delete ,class: "dropdown-item"%>       
-      
+        <%=link_to "ログアウト", destroy_user_session_path, method: :delete ,class: "dropdown-item"%>           
     </div>
   </div> 
 </div>

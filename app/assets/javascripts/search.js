@@ -3,20 +3,20 @@ document.addEventListener('turbolinks:load',function(){
 
   function appendUser(user) {
     var html = `<a class="user_cell" href="/users/${user.id}">
-                 <div class="user_content d-flex flex-row border-bottom py-1">
-                   <div class="user_image">
-                     <img src=${user.avatar.url} class = "icon_image user">
-                   </div>
-                   <div class="ml-2">
-                    <h5 class="mb-0 text-over">${user.name}</h5>
-                    <p class="mb-0 text-secondary text-over">@${user.search_id}</p>  
-                    <p class="text-over mb-0">${user.profile}</p>
-                   </div>
-                 </div>
+                  <div class="user_content d-flex flex-row">
+                    <div class="user_image">
+                      <img src=${user.avatar.url} class = "icon_image user">
+                    </div>
+                    <div class="user_prof">
+                      <h5 class="text-dark">${user.name}</h5>
+                      <p class="text-secondary">@${user.search_id}</p>  
+                      <p class="text-dark">${user.profile}</p>
+                    </div>
+                  </div>
                 </a>
-               `
+                `
     search_list.append(html);
-   }
+  }
 
   function appendErrMsgToHTML(msg) {
     var html = `
