@@ -1,35 +1,46 @@
 <div class="message" id="message-<%= message.id %>">
   <%if message.user.id == current_user.id %>
-  
-    <div class="mycomment mt-2">
-      <div class="mycomment-time">
+    <div class="my-comment mt-2  <%= message.id %>">
+      <div class="comment-time">
         <% if message.created_at.strftime('%Y/%m/%d') == Date.today.strftime('%Y/%m/%d')%>
           <p><%= l message.created_at, format: '%H:%M' %></p>
         <%else%>
           <p><%= l message.created_at, format: '%m/%d' %></p>
         <%end%>        
       </div>
-      <div class="mycomment-p">
-        <p class=""><%= simple_format((h message.content),class: 'hogehoge') %></p>
+      <div class="my-comment-p m_<%= message.id %>">
+        <p><%= simple_format((h message.content),class: 'hogehoge') %></p>
       </div>
     </div>
   <%else%>
-    <div class="left-comment mt-2">
-      <div class="chatting">
-        <div class="says">
-          <p class=""><%= simple_format((h message.content),class: 'hogehoge') %></p>
-            
-        </div> 
-        <div class="left-comment-time">
-          <% if message.created_at.strftime('%Y/%m/%d') == Date.today.strftime('%Y/%m/%d')%>
-            <p><%= l message.created_at, format: '%H:%M' %></p>
-          <%else%>
-            <p><%= l message.created_at, format: '%m/%d' %></p>
-          <%end%>        
-        </div>         
-      </div>
+    <div class="left-comment mt-2 <%= message.id %>">
+      <div class="says m_<%= message.id %>">
+        <p><%= simple_format((h message.content),class: 'hogehoge') %></p>
+      </div> 
+      <div class="comment-time">
+        <% if message.created_at.strftime('%Y/%m/%d') == Date.today.strftime('%Y/%m/%d')%>
+          <p><%= l message.created_at, format: '%H:%M' %></p>
+        <%else%>
+          <p><%= l message.created_at, format: '%m/%d' %></p>
+        <%end%>        
+      </div>          
     </div>
   <%end%>
 </div>
 
 
+<script>
+    var message = <%= message.user.id %>;
+    var m_user = document.getElementById('current_user');
+    var current_user = m_user.getAttribute('data-id')
+    if(message == current_user){
+      $('div.' + <%= message.id %>).addClass('my-comment');
+      $('div.m_' + <%= message.id %>).addClass('my-comment-p');
+
+    }else{
+      $('div.' + <%= message.id %>).addClass('left-comment');
+      $('div.m_' + <%= message.id %>).addClass('says');
+
+    }
+
+</script>

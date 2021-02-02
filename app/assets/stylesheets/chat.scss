@@ -18,7 +18,7 @@
     padding: 1rem 3rem 3rem 3rem;
     .message{
       text-align: right;
-      .left-comment .chatting {
+      .left-comment {
         width: 100%;
         text-align: left;
         .says {
@@ -44,15 +44,15 @@
             word-wrap: break-word;
           }
         }
-        .left-comment-time{
+        .comment-time{
           display: inline-block;
           font-size: smaller;
           color: #C0C0C0; 
         }
       }
-      .mycomment{
+      .my-comment{
         text-align: right;
-        .mycomment-p {
+        .my-comment-p {
           display: inline-block;
           position: relative; 
           padding: 0 8px;
@@ -74,7 +74,7 @@
             word-wrap: break-word;
           }
         }
-        .mycomment-time{
+        .comment-time{
           display: inline-block;
           font-size: smaller;
           color: #C0C0C0; 

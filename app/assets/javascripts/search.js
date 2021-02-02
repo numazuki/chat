@@ -62,6 +62,5 @@ document.addEventListener('turbolinks:load',function(){
     .fail(function() {
       alert('error');
     });    
-//---以上を追記---
   });  
 })
