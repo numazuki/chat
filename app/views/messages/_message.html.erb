@@ -32,13 +32,14 @@
 <script>
   console.log("aaaa");
   document.addEventListener('turbolinks:load',function(){
-    var message = <%= message.user.id %>;
+    var message_user_id = <%= message.user.id %>;
+    var current_user_id = <%=current_user.id%>
     var m_user = document.getElementById('current_user');
     var current_user = m_user.getAttribute('data-id')
-    if(message == current_user){
+    if(message_user_id == current_user_id){
       $('div.' + <%= message.id %>).addClass('my-comment');
       $('div.m_' + <%= message.id %>).addClass('my-comment-p');
-      console.log(message)
+      console.log(message_user_id)
       console.log(current_user)
     }else{
       $('div.' + <%= message.id %>).addClass('left-comment');
